@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm p-4">
+  <h3>Manual Prediction Form</h3>
+  <form method="POST" action="/prediction">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Gender</label>
+        <select name="gender" class="form-select">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Married</label>
+        <select name="married" class="form-select">
+          <option>Yes</option><option>No</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Dependents</label>
+        <select name="dependents" class="form-select">
+          <option>0</option><option>1</option><option>2</option><option>3+</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Education</label>
+        <select name="education" class="form-select">
+          <option>Graduate</option><option>Not Graduate</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Self Employed</label>
+        <select name="employed" class="form-select">
+          <option>Yes</option><option>No</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Credit Score (300-850)</label>
+        <input type="number" name="credit" class="form-control" min="300" max="1000" value="750" required>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Property Area</label>
+        <select name="area" class="form-select">
+          <option>Urban</option><option>Semiurban</option><option>Rural</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Applicant Income</label>
+        <input type="number" name="ApplicantIncome" class="form-control" value="5000" min="0" required>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Coapplicant Income</label>
+        <input type="number" name="CoapplicantIncome" class="form-control" value="0" min="0" required>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Loan Amount</label>
+        <input type="number" name="LoanAmount" class="form-control" value="100" min="1" required>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Loan Amount Term (months)</label>
+        <input type="number" name="Loan_Amount_Term" class="form-control" value="360" min="1" required>
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-2" type="submit">🔮 Predict Loan Status</button>
+  </form>
+
+  {% if result %}
+    <div class="mt-4">
+      {% if "Approved" in result %}
+        <div class="alert alert-success">{{ result }}</div>
+      {% elif "Rejected" in result %}
+        <div class="alert alert-danger">{{ result }}</div>
+      {% else %}
+        <div class="alert alert-warning">{{ result }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

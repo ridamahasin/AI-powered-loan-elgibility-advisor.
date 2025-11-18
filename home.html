@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm p-4">
+  <div class="row g-3">
+    <div class="col-md-5 d-flex align-items-center justify-content-center">
+      <img src="{{ url_for('static', filename='images/loan_banner.png') }}" 
+           alt="loan" style="max-width:100%; height: auto;">
+    </div>
+    <div class="col-md-7">
+      <h2>🚀 Loan Prediction System</h2>
+      <p class="lead">This tool predicts whether a loan application will be approved or rejected based on applicant data. You can use the manual prediction form or the chatbot that collects answers step-by-step.</p>
+      <a href="/prediction" class="btn btn-primary me-2">Start Prediction</a>
+      <a href="/chatbot" class="btn btn-outline-primary">Chat with Loan Bot</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
